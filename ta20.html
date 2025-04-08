@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cambio de Imagen con Hover</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      text-align: center;
+    }
+
+    img {
+      width: 300px;
+      height: auto;
+      transition: 0.3s ease;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Pasa el mouse sobre la imagen</h2>
+  <img 
+    id="miImagen" 
+    src="messi.jpg" 
+    alt="Imagen" 
+    onmouseover="cambiarImagen()" 
+    onmouseout="restaurarImagen()" 
+  />
+
+  <script>
+    function cambiarImagen() {
+      document.getElementById("miImagen").src = "cr7.jpeg";
+    }
+
+    function restaurarImagen() {
+      document.getElementById("miImagen").src = "messi.jpg";
+    }
+  </script>
+</body>
+</html>

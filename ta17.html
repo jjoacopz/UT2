@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contador</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <p>Contador: <span id="contador">0</span></p>
+  <button onclick="incrementar()">Incrementar</button>
+
+  <script>
+    function incrementar() {
+      const span = document.getElementById("contador");
+      let valorActual = parseInt(span.textContent);
+      span.textContent = valorActual + 1;
+    }
+  </script>
+</body>
+</html>

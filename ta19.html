@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Validación de Formulario</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h2>Formulario</h2>
+  <form id="formulario" novalidate>
+    <label>Nombre:</label>
+    <input type="text" id="nombre" />
+    <div class="error" id="errorNombre">El nombre es obligatorio.</div>
+
+    <label>Correo electrónico:</label>
+    <input type="email" id="correo" />
+    <div class="error" id="errorCorreo">Introduce un correo válido.</div>
+
+    <label>Contraseña:</label>
+    <input type="password" id="contrasena" />
+    <div class="error" id="errorContrasena">La contraseña debe tener al menos 8 caracteres.</div>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    const formulario = document.getElementById("formulario");
+
+    const nombreInput = document.getElementById("nombre");
+    const correoInput = document.getElementById("correo");
+    const contrasenaInput = document.getElementById("contrasena");
+
+    const errorNombre = document.getElementById("errorNombre");
+    const errorCorreo = document.getElementById("errorCorreo");
+    const errorContrasena = document.getElementById("errorContrasena");
+
+    function validarCorreo(correo) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(correo);
+    }
+
+    function validarFormulario() {
+      let valido = true;
+
+      if (nombreInput.value.trim() === "") {
+        errorNombre.style.display = "block";
+        valido = false;
+      } else {
+        errorNombre.style.display = "none";
+      }
+
+      if (!validarCorreo(correoInput.value.trim())) {
+        errorCorreo.style.display = "block";
+        valido = false;
+      } else {
+        errorCorreo.style.display = "none";
+      }
+
+      if (contrasenaInput.value.length < 8) {
+        errorContrasena.style.display = "block";
+        valido = false;
+      } else {
+        errorContrasena.style.display = "none";
+      }
+
+      return valido;
+    }
+
+    nombreInput.addEventListener("input", validarFormulario);
+    correoInput.addEventListener("input", validarFormulario);
+    contrasenaInput.addEventListener("input", validarFormulario);
+
+    formulario.addEventListener("submit", function (e) {
+      if (!validarFormulario()) {
+        e.preventDefault(); 
+      }
+    });
+  </script>
+</body>
+</html>

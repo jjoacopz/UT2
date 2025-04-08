@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detectar Cambio de Tamaño de Ventana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Detectar el tamaño de la ventana</h2>
+  <p id="dimensiones">Tamaño de la ventana: <span id="ancho"></span> x <span id="alto"></span></p>
+
+  <script>
+    function mostrarTamaño() {
+      const ancho = window.innerWidth;
+      const alto = window.innerHeight;
+
+      document.getElementById("ancho").textContent = ancho;
+      document.getElementById("alto").textContent = alto;
+    }
+
+    window.addEventListener("resize", mostrarTamaño);
+
+    mostrarTamaño();
+  </script>
+</body>
+</html>

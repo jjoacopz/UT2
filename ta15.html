@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista Dinámica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+    input, button {
+      padding: 8px;
+      font-size: 1rem;
+      margin-right: 5px;
+    }
+    ul {
+      margin-top: 20px;
+    }
+    li {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Lista dinámica</h2>
+  <input type="text" id="nuevoElemento" placeholder="Escribe algo..." />
+  <button onclick="añadirElemento()">Añadir elemento</button>
+  <button onclick="eliminarUltimo()">Eliminar último elemento</button>
+
+  <ul id="lista">
+  </ul>
+
+  <script>
+    function añadirElemento() {
+      const input = document.getElementById("nuevoElemento");
+      const texto = input.value.trim();
+
+      if (texto !== "") {
+        const li = document.createElement("li");
+        li.textContent = texto;
+        document.getElementById("lista").appendChild(li);
+        input.value = "";
+      }
+    }
+
+    function eliminarUltimo() {
+      const lista = document.getElementById("lista");
+      if (lista.lastChild) {
+        lista.removeChild(lista.lastChild);
+      }
+    }
+  </script>
+</body>
+</html>
